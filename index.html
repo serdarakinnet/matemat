@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematik Oyunu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="app-container" id="main-menu">
+        <!-- Header Section -->
+        <header class="glass-panel main-header">
+            <div class="header-item title">
+                <span class="icon">✨</span>
+                <h1>Matematik Oyunu</h1>
+            </div>
+            <div class="header-item user-info" id="user-profile" title="İsmini Değiştir">
+                <span class="avatar">👤</span>
+                <span class="name" id="display-name">Misafir</span>
+                <span class="edit-icon" style="font-size: 0.8rem; margin-left: 5px;">✏️</span>
+            </div>
+            <div class="header-item grade">
+                <select id="grade-selector" class="badge-select">
+                    <option value="2">2. Sınıf</option>
+                    <option value="3">3. Sınıf</option>
+                    <option value="4">4. Sınıf</option>
+                    <option value="5" selected>5. Sınıf</option>
+                    <option value="6">6. Sınıf</option>
+                    <option value="7">7. Sınıf</option>
+                    <option value="8">8. Sınıf</option>
+                </select>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <aside class="left-sidebar">
+                <div class="welcome-bubble glass-panel">
+                    <h2>Hoşgeldin, <br><span class="highlight" id="welcome-name">Misafir</span> <span class="heart">❤️</span></h2>
+                    <p>Öğrenmeye hazır mısın?</p>
+                </div>
+            </aside>
+
+            <section class="center-menu-container">
+                <div class="circular-menu">
+                    <button class="menu-item glass-panel" data-action="etkinlikler">
+                        <span class="item-icon">🎯</span>
+                        <span class="item-text">Etkinlikler</span>
+                    </button>
+                    <button class="menu-item glass-panel active" data-action="matematik">
+                        <span class="item-icon">📐</span>
+                        <span class="item-text">Matematik</span>
+                    </button>
+                    <button class="menu-item glass-panel" data-action="bulmacalar">
+                        <span class="item-icon">🧩</span>
+                        <span class="item-text">Bulmacalar</span>
+                    </button>
+                    <button class="menu-item glass-panel" data-action="bilmeceler">
+                        <span class="item-icon">🤔</span>
+                        <span class="item-text">Bilmeceler</span>
+                    </button>
+                    <div class="center-orb"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bottom-panels">
+            <!-- Konu Panel -->
+            <div class="options-panel glass-panel">
+                <div class="panel-header">
+                    <h3>📚 Konu</h3>
+                    <span class="selected-value" id="selected-topic">Toplama</span>
+                </div>
+                <div class="panel-list" id="topic-list">
+                    <button class="list-item active" data-topic="Toplama">Toplama</button>
+                    <button class="list-item" data-topic="Çıkarma">Çıkarma</button>
+                    <button class="list-item" data-topic="Çarpma">Çarpma</button>
+                    <button class="list-item" data-topic="Bölme">Bölme</button>
+                    <button class="list-item" data-topic="Kesirler">Kesirler</button>
+                    <button class="list-item" data-topic="Ondalıklar">Ondalıklar</button>
+                    <button class="list-item" data-topic="Yüzdeler">Yüzdeler</button>
+                </div>
+            </div>
+
+            <!-- Seviye Panel -->
+            <div class="options-panel glass-panel">
+                <div class="panel-header">
+                    <h3>⭐ Seviye</h3>
+                    <span class="selected-value" id="selected-level">Kolay</span>
+                </div>
+                <div class="panel-list level-list" id="level-list">
+                    <button class="list-item level-easy active" data-level="Kolay">Kolay</button>
+                    <button class="list-item level-medium" data-level="Orta">ORTA</button>
+                    <button class="list-item level-hard" data-level="Zor">ZOR</button>
+                </div>
+            </div>
+
+            <!-- Oyunlar Panel -->
+            <div class="options-panel glass-panel">
+                <div class="panel-header">
+                    <h3>🎮 OYUNLAR</h3>
+                </div>
+                <div class="panel-list games-list">
+                    <button class="game-btn primary-btn" id="start-cards-btn">
+                        <span class="game-icon">🃏</span>
+                        20 Kart Oyunu
+                    </button>
+                    <button class="game-btn secondary-btn">
+                        <span class="game-icon">🧩</span>
+                        Bulmaca Oyunu
+                    </button>
+                    <button class="game-btn accent-btn">
+                        <span class="game-icon">➕</span>
+                        Toplama Oyunu
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Cards Game View (Hidden by default) -->
+    <div class="app-container hidden" id="cards-view">
+        <header class="glass-panel main-header">
+            <button class="secondary-btn back-btn" id="back-to-menu">⬅ Ana Menü</button>
+            <div class="title">
+                <h1>Sihirli Kartlar</h1>
+            </div>
+            <div class="grade">
+                <span class="badge" id="cards-grade-badge">5. Sınıf</span>
+            </div>
+        </header>
+
+        <div class="cards-grid" id="cards-grid">
+            <!-- 20 Cards will be generated here by JS -->
+        </div>
+    </div>
+
+    <!-- Card Selection Modal -->
+    <div class="modal-overlay" id="card-setup-modal">
+        <div class="modal-content glass-panel setup-modal-content">
+            <div class="modal-close" id="close-setup-modal">✖</div>
+            <h2>Kart <span id="setup-card-number" class="highlight">#</span></h2>
+            <p>Bu kartın arkasında ne olsun istersin?</p>
+            
+            <div class="setup-options">
+                <div class="setup-group">
+                    <h3>Zorluk Seç</h3>
+                    <div class="setup-buttons" id="modal-level-list">
+                        <button class="setup-btn level-easy active" data-level="Kolay">Kolay</button>
+                        <button class="setup-btn level-medium" data-level="Orta">Orta</button>
+                        <button class="setup-btn level-hard" data-level="Zor">Zor</button>
+                    </div>
+                </div>
+                
+                <div class="setup-group">
+                    <h3>Konu Seç</h3>
+                    <select id="modal-topic-select" class="custom-select">
+                        <option value="Rastgele">Rastgele (Sürpriz!)</option>
+                        <option value="Toplama">Toplama</option>
+                        <option value="Çıkarma">Çıkarma</option>
+                        <option value="Çarpma">Çarpma</option>
+                        <option value="Bölme">Bölme</option>
+                        <option value="Kesirler">Kesirler</option>
+                        <option value="Ondalıklar">Ondalıklar</option>
+                        <option value="Yüzdeler">Yüzdeler</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="primary-btn full-width" id="flip-card-btn">Kartı Çevir!</button>
+        </div>
+    </div>
+
+    <!-- Question Modal -->
+    <div class="modal-overlay" id="question-modal">
+        <div class="modal-content glass-panel question-modal-content">
+            <div class="modal-close" id="close-question-modal">✖</div>
+            <div class="question-header">
+                <span class="q-badge level-badge" id="q-level-badge">Kolay</span>
+                <span class="q-badge topic-badge" id="q-topic-badge">Toplama</span>
+            </div>
+            
+            <div class="question-body">
+                <div class="question-icon" id="q-icon">🤔</div>
+                <p class="question-text" id="q-text">Soru buraya gelecek...</p>
+                
+                <!-- If it's a fill in the blank -->
+                <div class="answer-section" id="answer-section">
+                    <input type="text" id="answer-input" placeholder="Cevabın..." autocomplete="off">
+                    <button class="primary-btn" id="check-answer-btn">Kontrol Et</button>
+                </div>
+                <p id="feedback-text" class="feedback-msg"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Name Modal -->
+    <div class="modal-overlay active" id="name-modal">
+        <div class="modal-content glass-panel">
+            <h2>Hoşgeldin! 👋</h2>
+            <p>Oyunumuza başlamadan önce ismini öğrenebilir miyiz?</p>
+            <div class="input-group">
+                <input type="text" id="name-input" placeholder="İsmini buraya yaz..." autocomplete="off">
+                <button class="primary-btn" id="start-btn">Başla</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credit Footer -->
+    <div class="credit-footer">
+        Tasarlayan : Simay AKIN &reg;
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
